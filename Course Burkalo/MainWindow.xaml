@@ -1,0 +1,38 @@
+﻿<Window x:Class="LibraryAutomation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Автоматизация библиотеки" Height="450" Width="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\dburk\Desktop\1679771839_bogatyr-club-p-fon-dlya-prezentatsii-bibliotekarya-instag-55.jpg"/>
+        </Grid.Background>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBox x:Name="txtTitle" Width="200" Margin="5" Text="Добавьте название книги"/>
+            <TextBox x:Name="txtAuthor" Width="200" Margin="5" Text="Добавьте автора"/>
+            <TextBox x:Name="txtStudentName" Width="200" Margin="5" Text="Добавьте ФИО ученика"/>
+            <Button Content="Добавить книгу" Click="AddBook_Click" Margin="5"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" x:Name="lvBooks" Margin="5" SelectionChanged="lvBooks_SelectionChanged" ItemsSource="{Binding Books}" Background="#C0000000">
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Foreground" Value="White"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Title}" Width="200"/>
+                    <GridViewColumn Header="Автор" DisplayMemberBinding="{Binding Author}" Width="200"/>
+                    <GridViewColumn Header="ФИО ученика" DisplayMemberBinding="{Binding StudentName}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
